@@ -1,0 +1,29 @@
+{
+  "name": "katharsi-report-server",
+  "version": "1.0.0",
+  "description": "Katharsi report endpoint",
+  "homepage": "https://github.com/Cynic1254/Katharsi-Report-Server#readme",
+  "bugs": {
+    "url": "https://github.com/Cynic1254/Katharsi-Report-Server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cynic1254/Katharsi-Report-Server.git"
+  },
+  "license": "ISC",
+  "author": "Cynic1254",
+  "type": "commonjs",
+  "main": "Index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "typescript": "^5.7.3"
+  }
+}
