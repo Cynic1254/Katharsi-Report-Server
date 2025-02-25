@@ -23,6 +23,7 @@ app.post("/api/feedback", (req, res) => {
     }
 
     console.log(req.body)
+    console.log("Parsing object")
 
     const result = FormSchema.safeParse(req.body)
 
