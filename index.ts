@@ -31,6 +31,8 @@ app.post("/api/feedback", (req, res) => {
         return;
     }
 
+    console.log("Valid data")
+
     const filePath = "./reports/" + generateFilename(req)
 
     //data is valid enough, safe it
