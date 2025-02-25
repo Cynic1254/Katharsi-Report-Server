@@ -43,6 +43,8 @@ app.post("/api/feedback", (req, res) => {
 
         res.json({ message: "Form saved successfully", file: filePath });
     })
+
+    console.log(`Wrote file ${filePath}`)
 })
 
 app.listen(port, () => {
