@@ -23,7 +23,6 @@ app.post("/api/feedback", (req, res) => {
     }
 
     console.log(req.body)
-    console.log("Parsing object")
 
     const result = FormSchema.safeParse(req.body)
 
@@ -32,8 +31,6 @@ app.post("/api/feedback", (req, res) => {
         res.status(400).json({error: result.error.format()})
         return;
     }
-
-    console.log("Valid data")
 
     const filePath = "./reports/" + generateFilename(req)
 
@@ -47,8 +44,6 @@ app.post("/api/feedback", (req, res) => {
 
         res.json({ message: "Form saved successfully", file: filePath });
     })
-
-    console.log(`Wrote file ${filePath}`)
 })
 
 app.listen(port, () => {
