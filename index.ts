@@ -27,6 +27,7 @@ app.post("/api/feedback", (req, res) => {
     const result = FormSchema.safeParse(req.body)
 
     if (!result.success) {
+        console.log(result.error.format())
         res.status(400).json({error: result.error.format()})
         return;
     }
