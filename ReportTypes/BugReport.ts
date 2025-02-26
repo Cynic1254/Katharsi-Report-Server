@@ -3,7 +3,7 @@
 export const BugReportSchema = z.object({
     Username: z.string(),
     CanContact: z.boolean(),
-    ContactInformation: z.string(),
+    ContactInformation: z.optional(z.string()),
     Description: z.string()
 })
 
