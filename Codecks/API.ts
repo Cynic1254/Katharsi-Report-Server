@@ -8,14 +8,13 @@ export async function CreateCard(form: Form, fileName: string) {
     let content: string = "";
 
     if (result.success) {
-        content = `${result.data.Description}\n\n
-        
-        Reported by: ${result.data.Username}\n
-        ${result.data.CanContact ? `Contact info: ${result.data.ContactInformation}` : ``}\n\n`
+        content = `${result.data.Description}\n\n` +
+            `Reported by: ${result.data.Username}\n` +
+            `${result.data.CanContact ? `Contact info: ${result.data.ContactInformation}` : ``}\n\n`
     }
 
-    content += `Report created on: ${form.date}\n
-    Filename: ${fileName}`
+    content += `Report created on: ${form.date}\n` +
+        `Filename: ${fileName}`
 
     const Request = new CodecksRequest();
     Request.content = content
