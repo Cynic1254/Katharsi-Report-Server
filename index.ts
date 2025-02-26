@@ -2,7 +2,7 @@
 import {FormSchema} from "./Form";
 import * as fs from "node:fs";
 import path from "node:path";
-import {CreateCard} from "./Codecks/API";
+import {CreateCard, CreateComment} from "./Codecks/API";
 
 const app = express();
 const port = 19100;
@@ -47,8 +47,10 @@ app.post("/api/feedback", (req, res) => {
     })
 
     CreateCard(result.data, filePath).then((value) => {
-        console.log(`Successfully created card with ID: ${value}`)
-    });
+        CreateComment(value, JSON.stringify(result.data)).then((CommentValue) => {
+            console.log(`Successfully created card with ID: ${value}`)
+        })
+    })
 })
 
 app.listen(port, () => {
