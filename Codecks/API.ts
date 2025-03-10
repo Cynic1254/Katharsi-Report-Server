@@ -4,7 +4,7 @@ import {CodecksRequest, REPORT_TOKEN, TEAM_DOMAIN, USER_ID, USER_TOKEN} from "./
 import {UploadFile} from "../AWS/API";
 
 export async function CreateCard(form: Form, fileName: string) {
-    const result = BugReportSchema.safeParse(form.formData)
+    const result = BugReportSchema.safeParse(form.FormData)
 
     let content: string = "";
 
@@ -14,7 +14,7 @@ export async function CreateCard(form: Form, fileName: string) {
             `${result.data.CanContact ? `Contact info: ${result.data.ContactInformation}` : ``}\n\n`
     }
 
-    content += `Report created on: ${form.date}\n`
+    content += `Report created on: ${form.Date}\n`
 
     const Request = new CodecksRequest();
     Request.content = content
