@@ -15,7 +15,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
 
     console.log(`headers: ${JSON.stringify(formData.getHeaders(), null, 2)}`)
     console.log(`Data:`)
-    console.log(JSON.stringify(formData.getBuffer().entries()))
+    console.log(JSON.stringify(formData))
 
     // @ts-ignore
     // formData.submit(url, function (error, response) {
