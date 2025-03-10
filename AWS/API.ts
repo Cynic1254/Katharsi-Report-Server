@@ -1,5 +1,4 @@
 ﻿import FormData from "form-data"
-import {TEAM_DOMAIN, USER_TOKEN} from "../Codecks/Form";
 
 export function UploadFile(url: string, fields: Record<string, string>, jsonContents: object, fileName: string) {
     const formData = new FormData();
@@ -17,13 +16,12 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
     console.log(`Data:`)
     console.log(JSON.stringify(formData))
 
-    // @ts-ignore
-    // formData.submit(url, function (error, response) {
-    //     console.log(`upload attempt to ${url} completed`)
-    //     console.log(response.statusCode)
-    //
-    //     if (error) {
-    //         console.log(error.message)
-    //     }
-    // })
+    formData.submit(url, function (error, response) {
+        console.log(`upload attempt to ${response.url} completed`)
+        console.log(response.statusCode)
+
+        if (error) {
+            console.log(error.message)
+        }
+    })
 }
