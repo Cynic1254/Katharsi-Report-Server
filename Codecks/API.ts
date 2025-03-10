@@ -40,12 +40,8 @@ export async function CreateCard(form: Form, fileName: string) {
                     continue
                 }
 
-                if (result.data)
-                    UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, result.data, fileName)
-                else {
-                    reject("No valid data to upload")
-                    return
-                }
+                UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, form, fileName)
+                return
             }
 
             resolve(data.cardId)
