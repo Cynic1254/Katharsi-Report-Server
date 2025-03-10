@@ -5,16 +5,23 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
 
     formData.append("Content-Type", "application/json")
 
+    console.log(`adding variables...`)
+
     Object.entries(fields).forEach(([key, value]) => formData.append(key, value))
 
-    formData.append("file", JSON.stringify(jsonContents, null, 2), {
+    console.log(`adding file contents...`)
+
+    formData.append("file", JSON.stringify(jsonContents), {
         filename: fileName,
         contentType: "application/json"
     });
 
+    console.log(`Starting submit...`)
+
     formData.submit(url, function (error, response) {
         // @ts-ignore safe to ignore since the absence of a status code should also be an error
         if (response.statusCode < 400) {
+            console.log(`upload succeeded with code ${response.statusCode} - ${response.statusMessage}`)
             return;
         }
 
