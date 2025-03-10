@@ -16,7 +16,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
         contentType: "application/json"
     });
 
-    console.log(`Starting submit...`)
+    console.log(`Starting submit of form: ${JSON.stringify(formData)}...`)
 
     formData.submit(url, function (error, response) {
         // @ts-ignore safe to ignore since the absence of a status code should also be an error
