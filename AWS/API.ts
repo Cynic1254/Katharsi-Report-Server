@@ -1,4 +1,5 @@
 ﻿import FormData from "form-data"
+import {TEAM_DOMAIN, USER_TOKEN} from "../Codecks/Form";
 
 export function UploadFile(url: string, fields: Record<string, string>, jsonContents: object, fileName: string) {
     const formData = new FormData();
@@ -12,6 +13,12 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
         contentType: "application/json"
     });
 
+    formData.getHeaders({
+        "X-Auth-Token": `${USER_TOKEN}`,
+        "X-Account": `${TEAM_DOMAIN}`
+    })
+
+    // @ts-ignore
     formData.submit(url, function (error, response) {
         console.log("upload attempt completed")
         console.log(response.statusMessage)
