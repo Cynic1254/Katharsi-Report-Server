@@ -13,7 +13,7 @@ app.use(express.json())
 function generateFilename(req: express.Request): string {
     // @ts-ignore
     const ip = req.ip.replace(/[:.]/g, "-"); // Replace colons & dots (IPv6 & IPv4 safe)
-    const timestamp = new Date().toISOString().replace(/[:]/g, "-"); // Ensure a safe filename
+    const timestamp = new Date().toISOString().replace(/:/g, "-"); // Ensure a safe filename
     return `form_${ip}_${timestamp}.json`;
 }
 
@@ -47,7 +47,7 @@ app.post("/api/feedback", (req, res) => {
     })
 
     CreateCard(result.data, filePath).then((value) => {
-        CreateComment(value, JSON.stringify(result.data)).then((CommentValue) => {
+        CreateComment(value, JSON.stringify(result.data, null, 2)).then(() => {
             console.log(`Successfully created card with ID: ${value}`)
         })
     })

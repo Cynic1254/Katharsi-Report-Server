@@ -18,6 +18,7 @@ export async function CreateCard(form: Form, fileName: string) {
 
     const Request = new CodecksRequest();
     Request.content = content
+    //Request.fileNames = [fileName]
 
     return new Promise<string>((resolve, reject) => {
         fetch(`https://api.codecks.io/user-report/v1/create-report?token=${REPORT_TOKEN}`, {
@@ -31,6 +32,9 @@ export async function CreateCard(form: Form, fileName: string) {
             }
 
             const data = await response.json()
+
+            console.log(JSON.stringify(response, null, 2))
+
             resolve(data.cardId)
         }).catch((err) => {
             reject(err)
