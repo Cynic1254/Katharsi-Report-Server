@@ -11,7 +11,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
 
     console.log(`adding file contents: ${JSON.stringify(jsonContents)}...`)
 
-    formData.append("file", JSON.stringify(jsonContents), {
+    formData.append("file", jsonContents, {
         filename: fileName,
         contentType: "application/json"
     });
