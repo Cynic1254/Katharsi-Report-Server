@@ -1,4 +1,4 @@
-﻿import {Form} from "../Form";
+﻿import {Form, FormSchema} from "../Form";
 import {BugReportSchema} from "../ReportTypes/BugReport";
 import {CodecksRequest, REPORT_TOKEN, TEAM_DOMAIN, USER_ID, USER_TOKEN} from "./Form";
 import {UploadFile} from "../AWS/API";
@@ -40,7 +40,7 @@ export async function CreateCard(form: Form, fileName: string) {
                     continue
                 }
 
-                UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, form, fileName)
+                UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, FormSchema.safeParse(form), fileName)
                 return
             }
 
