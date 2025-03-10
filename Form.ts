@@ -1,80 +1,80 @@
 ﻿//chat-gpt generated
 
-import { z } from "zod";
+import {z} from "zod";
 
 // Schema for Display objects
 const DisplaySchema = z.object({
-    currentModeWidth: z.number(),
-    currentModeHeight: z.number(),
+    CurrentModeWidth: z.number(),
+    CurrentModeHeight: z.number(),
 });
 
 // Schema for RHIAdapter
 const RHIAdapterSchema = z.object({
-    adapterName: z.string(),
-    adapterInternalDriverVersion: z.string(),
-    adapterUserDriverVersion: z.string(),
-    adapterDriverDate: z.string(),
-    adapterDedicatedMemoryMB: z.string(),
+    AdapterName: z.string(),
+    AdapterInternalDriverVersion: z.string(),
+    AdapterUserDriverVersion: z.string(),
+    AdapterDriverDate: z.string(),
+    AdapterDedicatedMemoryMB: z.string(),
 });
 
 // Schema for BenchmarkStat
 const BenchmarkStatSchema = z.object({
-    description: z.string(),
-    performanceIndex: z.number(),
-    valueType: z.string(),
-    normalizedTime: z.number(),
-    measuredTotalTime: z.number(),
-    confidence: z.number(),
-    weight: z.number(),
+    Description: z.string(),
+    PerformanceIndex: z.number(),
+    ValueType: z.string(),
+    NormalizedTime: z.number(),
+    MeasuredTotalTime: z.number(),
+    Confidence: z.number(),
+    Weight: z.number(),
 });
 
 // Schema for SynthBenchmark
 const SynthBenchmarkSchema = z.object({
-    cpuStats: z.array(BenchmarkStatSchema),
-    cpuPerfIndex: z.number(),
-    gpuStats: z.array(BenchmarkStatSchema),
-    gpuPerfIndex: z.number(),
-    totalGPUTime: z.number(),
+    CPUStats: z.array(BenchmarkStatSchema),
+    CPUPerfIndex: z.number(),
+    GPUStats: z.array(BenchmarkStatSchema),
+    GPUPerfIndex: z.number(),
+    TotalGPUTime: z.number(),
 });
 
 // Schema for HardwareSurvey
 const HardwareSurveySchema = z.object({
-    platform: z.string(),
-    osVersion: z.string(),
-    osSubVersion: z.string(),
-    osBits: z.number(),
-    osLanguage: z.string(),
-    renderingAPI: z.string(),
-    hardDriveGB: z.number(),
-    hardDriveFreeMB: z.number(),
-    memoryMB: z.number(),
-    cpuPerformanceIndex: z.number(),
-    gpuPerformanceIndex: z.number(),
-    ramPerformanceIndex: z.number(),
+    Platform: z.string(),
+    OSVersion: z.string(),
+    OSSubVersion: z.string(),
+    OSBits: z.number(),
+    OSLanguage: z.string(),
+    RenderingAPI: z.string(),
+    HardDriveGB: z.number(),
+    HardDriveFreeMB: z.number(),
+    MemoryMB: z.number(),
+    CPUPerformanceIndex: z.number(),
+    GPUPerformanceIndex: z.number(),
+    RAMPerformanceIndex: z.number(),
     bIsLaptopComputer: z.boolean(),
     bIsRemoteSession: z.boolean(),
-    cpuCount: z.number(),
-    cpuClockGHz: z.number(),
-    cpuBrand: z.string(),
-    cpuNameString: z.string(),
-    cpuInfo: z.number(),
-    displayCount: z.number(),
-    displays: z.array(DisplaySchema),
-    rhiAdapter: RHIAdapterSchema,
-    errorCount: z.number(),
-    lastSurveyError: z.string(),
-    lastSurveyErrorDetail: z.string(),
-    lastPerformanceIndexError: z.string(),
-    lastPerformanceIndexErrorDetail: z.string(),
-    synthBenchmark: SynthBenchmarkSchema,
+    CPUCount: z.number(),
+    CPUClockGHz: z.number(),
+    CPUBrand: z.string(),
+    CPUNameString: z.string(),
+    CPUInfo: z.number(),
+    DisplayCount: z.number(),
+    Displays: z.array(DisplaySchema),
+    RHIAdapter: RHIAdapterSchema,
+    ErrorCount: z.number(),
+    LastSurveyError: z.string(),
+    LastSurveyErrorDetail: z.string(),
+    LastPerformanceIndexError: z.string(),
+    LastPerformanceIndexErrorDetail: z.string(),
+    SynthBenchmark: SynthBenchmarkSchema,
 });
 
 // Schema for Form
 export const FormSchema = z.object({
-    formData: z.record(z.any()), // Generic object for form data
-    playtime: z.number(),
-    date: z.string(), // ISO8601 date format (generated using `new Date().toISOString()`)
-    hardwareSurvey: HardwareSurveySchema.optional(), // Optional, based on AllowHardwareInfo
+    FormData: z.record(z.any()), // Generic object for form data
+    Playtime: z.number(),
+    Date: z.string(), // ISO8601 date format (generated using `new Date().toISOString()`)
+    HardwareSurvey: HardwareSurveySchema.optional(), // Optional, based on AllowHardwareInfo
 });
 
 // TypeScript types based on Zod schemas
