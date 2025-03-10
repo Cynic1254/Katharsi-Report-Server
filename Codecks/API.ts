@@ -40,7 +40,8 @@ export async function CreateCard(form: Form, fileName: string) {
                     continue
                 }
 
-                UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, FormSchema.safeParse(form), fileName)
+                console.log(`Uploading File...`)
+                UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, form, fileName)
                 return
             }
 
