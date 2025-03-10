@@ -13,20 +13,17 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
         contentType: "application/json"
     });
 
-    formData.getHeaders({
-        "X-Auth-Token": `${USER_TOKEN}`,
-        "X-Account": `${TEAM_DOMAIN}`
-    })
+    console.log(`headers: ${JSON.stringify(formData.getHeaders(), null, 2)}`)
+    console.log(`Data:`)
+    console.log(JSON.stringify(formData.getBuffer().entries()))
 
     // @ts-ignore
-    formData.submit(url, function (error, response) {
-        console.log(`upload attempt to ${url} completed`)
-        console.log(response.statusCode)
-
-        console.log(`request: \n ${formData.getBuffer().toString()}`)
-
-        if (error) {
-            console.log(error.message)
-        }
-    })
+    // formData.submit(url, function (error, response) {
+    //     console.log(`upload attempt to ${url} completed`)
+    //     console.log(response.statusCode)
+    //
+    //     if (error) {
+    //         console.log(error.message)
+    //     }
+    // })
 }
