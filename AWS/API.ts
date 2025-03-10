@@ -17,7 +17,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
     console.log(JSON.stringify(formData))
 
     formData.submit(url, function (error, response) {
-        console.log(`upload attempt to ${response.url} completed`)
+        console.log(`upload attempt to ${JSON.stringify(response)} completed`)
         console.log(response.statusCode)
 
         if (error) {
