@@ -38,8 +38,11 @@ export async function CreateCard(form: Form, fileName: string) {
 
             for (const uploadUrlsKey of data.uploadUrls) {
                 if (uploadUrlsKey.fileName != fileName) {
+                    console.log(`File ${uploadUrlsKey.fileName} is not ${fileName}`)
                     continue
                 }
+
+                console.log(`uploading: ${uploadUrlsKey.fileName}`)
 
                 if (result.data)
                     UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, result.data, fileName)
