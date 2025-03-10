@@ -9,7 +9,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
 
     Object.entries(fields).forEach(([key, value]) => formData.append(key, value))
 
-    console.log(`adding file contents...`)
+    console.log(`adding file contents: ${JSON.stringify(jsonContents)}...`)
 
     formData.append("file", JSON.stringify(jsonContents), {
         filename: fileName,
