@@ -3,6 +3,8 @@
 export function UploadFile(url: string, fields: Record<string, string>, jsonContents: object, fileName: string) {
     const formData = new FormData();
 
+    formData.append("Content-Type", "application/json")
+
     for (const [key, value] of Object.entries(fields)) {
         formData.append(key, value)
     }
@@ -18,7 +20,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
 
     formData.submit(url, function (error, response) {
         console.log(`upload attempt to ${JSON.stringify(response.headers, null, 2)} completed`)
-        console.log(response.statusCode)
+        console.log()
 
         if (error) {
             console.log(error.message)
