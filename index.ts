@@ -33,7 +33,8 @@ app.post("/api/feedback", (req, res) => {
         return;
     }
 
-    const filePath = "./reports/" + generateFilename(req)
+    const fileName = generateFilename(req)
+    const filePath = "./reports/" + fileName
 
     //data is valid enough, safe it
     fs.mkdirSync(path.dirname(filePath), {recursive: true});
@@ -46,7 +47,7 @@ app.post("/api/feedback", (req, res) => {
         res.json({message: "Form saved successfully", file: filePath});
     })
 
-    CreateCard(result.data, filePath).then((value) => {
+    CreateCard(result.data, fileName).then((value) => {
         CreateComment(value, JSON.stringify(result.data, null, 2)).then(() => {
             console.log(`Successfully created card with ID: ${value}`)
         })
