@@ -19,8 +19,8 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
     })
 
     // @ts-ignore
-    formData.submit("https://s3.eu-central-1.amazonaws.com/uploads-codecks", function (error, response) {
-        console.log(`upload attempt to https://s3.eu-central-1.amazonaws.com/uploads-codecks completed`)
+    formData.submit(url, function (error, response) {
+        console.log(`upload attempt to ${url} completed`)
         console.log(response.statusCode)
 
         if (error) {
