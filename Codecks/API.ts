@@ -14,8 +14,7 @@ export async function CreateCard(form: Form, fileName: string) {
             `${result.data.CanContact ? `Contact info: ${result.data.ContactInformation}` : ``}\n\n`
     }
 
-    content += `Report created on: ${form.date}\n` +
-        `Filename: [${fileName}](${fileName})`
+    content += `Report created on: ${form.date}\n`
 
     const Request = new CodecksRequest();
     Request.content = content
@@ -38,11 +37,8 @@ export async function CreateCard(form: Form, fileName: string) {
 
             for (const uploadUrlsKey of data.uploadUrls) {
                 if (uploadUrlsKey.fileName != fileName) {
-                    console.log(`File ${uploadUrlsKey.fileName} is not ${fileName}`)
                     continue
                 }
-
-                console.log(`uploading: ${uploadUrlsKey.fileName}`)
 
                 if (result.data)
                     UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, result.data, fileName)
