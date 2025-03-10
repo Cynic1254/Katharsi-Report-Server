@@ -23,6 +23,8 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
         console.log(`upload attempt to ${url} completed`)
         console.log(response.statusCode)
 
+        console.log(`request: \n ${formData.getBuffer().toString()}`)
+
         if (error) {
             console.log(error.message)
         }
