@@ -33,7 +33,7 @@ export async function CreateCard(form: Form, fileName: string) {
 
             const data = await response.json()
 
-            console.log(JSON.stringify(response, null, 2))
+            console.log(JSON.stringify(data, null, 2))
 
             resolve(data.cardId)
         }).catch((err) => {
