@@ -1,6 +1,6 @@
 ﻿import FormData from "form-data"
 
-function UploadFile(url: string, fields: Record<string, string>, jsonContents: object, fileName: string) {
+export function UploadFile(url: string, fields: Record<string, string>, jsonContents: object, fileName: string) {
     const formData = new FormData();
 
     for (const [key, value] of Object.entries(fields)) {
@@ -14,7 +14,7 @@ function UploadFile(url: string, fields: Record<string, string>, jsonContents: o
 
     formData.submit(url, function (error, response) {
         console.log(response.statusMessage)
-        
+
         if (error) {
             console.log(error.message)
         }

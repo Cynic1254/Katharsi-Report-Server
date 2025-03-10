@@ -1,6 +1,7 @@
 ﻿import {Form} from "../Form";
 import {BugReportSchema} from "../ReportTypes/BugReport";
 import {CodecksRequest, REPORT_TOKEN, TEAM_DOMAIN, USER_ID, USER_TOKEN} from "./Form";
+import {UploadFile} from "../AWS/API";
 
 export async function CreateCard(form: Form, fileName: string) {
     const result = BugReportSchema.safeParse(form.formData)
@@ -18,7 +19,7 @@ export async function CreateCard(form: Form, fileName: string) {
 
     const Request = new CodecksRequest();
     Request.content = content
-    //Request.fileNames = [fileName]
+    Request.fileNames = [fileName]
 
     return new Promise<string>((resolve, reject) => {
         fetch(`https://api.codecks.io/user-report/v1/create-report?token=${REPORT_TOKEN}`, {
@@ -34,6 +35,19 @@ export async function CreateCard(form: Form, fileName: string) {
             const data = await response.json()
 
             console.log(JSON.stringify(data, null, 2))
+
+            for (const uploadUrlsKey of data.uploadUrls) {
+                if (uploadUrlsKey.fileName != fileName) {
+                    continue
+                }
+
+                if (result.data)
+                    UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, result.data, fileName)
+                else {
+                    reject("No valid data to upload")
+                    return
+                }
+            }
 
             resolve(data.cardId)
         }).catch((err) => {
