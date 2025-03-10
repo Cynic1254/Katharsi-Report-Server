@@ -13,6 +13,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
     });
 
     formData.submit(url, function (error, response) {
+        console.log("upload attempt completed")
         console.log(response.statusMessage)
 
         if (error) {
