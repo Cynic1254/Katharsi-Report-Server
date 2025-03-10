@@ -15,7 +15,7 @@ export async function CreateCard(form: Form, fileName: string) {
     }
 
     content += `Report created on: ${form.date}\n` +
-        `Filename: [${fileName}](fileName)`
+        `Filename: [${fileName}](${fileName})`
 
     const Request = new CodecksRequest();
     Request.content = content

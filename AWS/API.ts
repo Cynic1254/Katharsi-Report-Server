@@ -15,8 +15,6 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
     formData.submit(url, function (error, response) {
         // @ts-ignore safe to ignore since the absence of a status code should also be an error
         if (response.statusCode < 400) {
-            console.log(`File successfully uploaded with status code: ${response.statusCode} - ${response.statusMessage}`)
-
             return;
         }
 
