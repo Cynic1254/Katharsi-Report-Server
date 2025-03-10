@@ -20,7 +20,7 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
 
     // @ts-ignore
     formData.submit(url, function (error, response) {
-        console.log("upload attempt completed")
+        console.log(`upload attempt to ${url} completed`)
         console.log(response.statusMessage)
 
         if (error) {
