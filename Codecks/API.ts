@@ -47,6 +47,7 @@ export async function CreateCard(form: Form, fileName: string) {
 
             resolve(data.cardId)
         }).catch((err) => {
+            console.error(err)
             reject(err)
         })
     })
@@ -54,6 +55,7 @@ export async function CreateCard(form: Form, fileName: string) {
 
 export async function CreateComment(cardId: string, content: string) {
     return new Promise<string>((resolve, reject) => {
+        console.log(`creating comment...`)
         fetch(`https://api.codecks.io/dispatch/resolvables/create`, {
             method: "POST",
             headers: {
@@ -69,6 +71,7 @@ export async function CreateComment(cardId: string, content: string) {
             })
         }).then(async (res) => {
             if (res.status != 200) {
+                console.log(`comment creation failed ${res.status} - ${res.statusText}`)
                 reject("Request denied")
                 return
             }
@@ -76,6 +79,7 @@ export async function CreateComment(cardId: string, content: string) {
             const data = await res.json()
             resolve(data.payload.id)
         }).catch((err) => {
+            console.error(err)
             reject(err)
         });
     });
