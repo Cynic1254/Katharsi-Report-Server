@@ -5,18 +5,12 @@ export function UploadFile(url: string, fields: Record<string, string>, jsonCont
 
     formData.append("Content-Type", "application/json")
 
-    console.log(`adding variables...`)
-
     Object.entries(fields).forEach(([key, value]) => formData.append(key, value))
 
-    console.log(`adding file contents: ${JSON.stringify(jsonContents)}...`)
-
-    formData.append("file", jsonContents, {
+    formData.append("file", JSON.stringify(jsonContents), {
         filename: fileName,
         contentType: "application/json"
     });
-
-    console.log(`Starting submit of form: ${JSON.stringify(formData)}...`)
 
     formData.submit(url, function (error, response) {
         // @ts-ignore safe to ignore since the absence of a status code should also be an error
