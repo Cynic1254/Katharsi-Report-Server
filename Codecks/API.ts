@@ -1,4 +1,4 @@
-﻿import {Form, FormSchema} from "../Form";
+﻿import {Form} from "../Form";
 import {BugReportSchema} from "../ReportTypes/BugReport";
 import {CodecksRequest, REPORT_TOKEN, TEAM_DOMAIN, USER_ID, USER_TOKEN} from "./Form";
 import {UploadFile} from "../AWS/API";
@@ -32,8 +32,6 @@ export async function CreateCard(form: Form, fileName: string) {
             }
 
             const data = await response.json()
-
-            console.log(JSON.stringify(data, null, 2))
 
             for (const uploadUrlsKey of data.uploadUrls) {
                 if (uploadUrlsKey.fileName != fileName) {

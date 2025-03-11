@@ -23,7 +23,7 @@ app.post("/api/feedback", (req, res) => {
         return
     }
 
-    console.log(req.body)
+    console.log("Handling request from: " + req.ip)
 
     const result = FormSchema.safeParse(req.body)
 
@@ -44,6 +44,7 @@ app.post("/api/feedback", (req, res) => {
             return res.status(500).json({error: "Failed to save file"});
         }
 
+        console.log("Form saved successfully locally as: " + filePath)
         res.json({message: "Form saved successfully", file: filePath});
     })
 
