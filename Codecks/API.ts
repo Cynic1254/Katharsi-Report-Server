@@ -42,7 +42,6 @@ export async function CreateCard(form: Form, fileName: string) {
 
                 console.log(`Uploading File...`)
                 UploadFile(uploadUrlsKey.url, uploadUrlsKey.fields, form, fileName)
-                return
             }
 
             resolve(data.cardId)
