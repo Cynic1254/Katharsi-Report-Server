@@ -74,6 +74,7 @@ export const FormSchema = z.object({
     FormData: z.record(z.any()), // Generic object for form data
     Playtime: z.number(),
     Date: z.string(), // ISO8601 date format (generated using `new Date().toISOString()`)
+    Version: z.string(),
     HardwareSurvey: HardwareSurveySchema.optional(), // Optional, based on AllowHardwareInfo
 });
 

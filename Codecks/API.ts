@@ -13,7 +13,7 @@ export async function CreateCard(form: Form, fileName: string) {
             `Reported by: ${result.data.Username}\n` +
             `${result.data.CanContact ? `Contact info: ${result.data.ContactInformation}` : ``}\n\n`
     }
-
+    
     content += `Report created on: ${form.Date}\n`
 
     const Request = new CodecksRequest();
